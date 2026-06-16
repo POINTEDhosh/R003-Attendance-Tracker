@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R003 Attendance Tracker: May 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── DARK THEME ── */
+  :root, [data-theme="dark"] {
+    --bg:          #0a0a0f;
+    --surface:     #13131a;
+    --surface2:    #1c1c26;
+    --border:      rgba(255,255,255,0.07);
+    --border2:     rgba(255,255,255,0.12);
+    --text:        #e8e8f0;
+    --text-sub:    #7878a0;
+    --text-dim:    #4a4a6a;
+    --accent:      #6366f1;
+    --accent2:     #818cf8;
+    --red:         #ef4444;
+    --orange:      #f97316;
+    --yellow-bg:   rgba(250,204,21,0.08);
+    --yellow-br:   rgba(250,204,21,0.25);
+    --row-alt:     rgba(255,255,255,0.02);
+    --row-hover:   rgba(255,255,255,0.03);
+    --thead-bg:    #1c1c26;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    --mesh1:       rgba(99,102,241,0.12);
+    --mesh2:       rgba(139,92,246,0.08);
+    --mesh3:       rgba(59,130,246,0.06);
+    --toggle-bg:   #1c1c26;
+    --toggle-bd:   rgba(255,255,255,0.12);
+    --sun-op:      0.3;
+    --moon-op:     1;
+
+    --josh-bg:    rgba(29,58,95,0.6);   --josh-t:    #93c5fd;  --josh-bd:   rgba(147,197,253,0.2);
+    --cesar-bg:   rgba(20,57,30,0.6);   --cesar-t:   #86efac;  --cesar-bd:  rgba(134,239,172,0.2);
+    --megan-bg:   rgba(61,31,0,0.6);    --megan-t:   #fdba74;  --megan-bd:  rgba(253,186,116,0.2);
+    --michael-bg: rgba(59,15,30,0.6);   --michael-t: #fda4af;  --michael-bd:rgba(253,164,175,0.2);
+    --aliyah-bg:  rgba(45,27,78,0.6);   --aliyah-t:  #c4b5fd;  --aliyah-bd: rgba(196,181,253,0.2);
+    --robert-bg:  rgba(15,51,48,0.6);   --robert-t:  #6ee7b7;  --robert-bd: rgba(110,231,183,0.2);
+    --mikki-bg:   rgba(59,40,0,0.6);    --mikki-t:   #fcd34d;  --mikki-bd:  rgba(252,211,77,0.2);
+    --brandon-bg: rgba(42,26,16,0.6);   --brandon-t: #d6b99a;  --brandon-bd:rgba(214,185,154,0.2);
+  }
+
+  /* ── LIGHT THEME ── */
+  [data-theme="light"] {
+    --bg:          #f0f2f8;
+    --surface:     #ffffff;
+    --surface2:    #f5f6fa;
+    --border:      rgba(0,0,0,0.08);
+    --border2:     rgba(0,0,0,0.14);
+    --text:        #1a1a2e;
+    --text-sub:    #5a5a8a;
+    --text-dim:    #9898b8;
+    --accent:      #4f46e5;
+    --accent2:     #4338ca;
+    --red:         #dc2626;
+    --orange:      #ea580c;
+    --yellow-bg:   rgba(234,179,8,0.08);
+    --yellow-br:   rgba(234,179,8,0.3);
+    --row-alt:     rgba(0,0,0,0.02);
+    --row-hover:   rgba(79,70,229,0.04);
+    --thead-bg:    #f5f6fa;
+    --card-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    --mesh1:       rgba(99,102,241,0.06);
+    --mesh2:       rgba(139,92,246,0.04);
+    --mesh3:       rgba(59,130,246,0.03);
+    --toggle-bg:   #ffffff;
+    --toggle-bd:   rgba(0,0,0,0.12);
+    --sun-op:      1;
+    --moon-op:     0.35;
+
+    --josh-bg:    rgba(219,234,254,0.8); --josh-t:    #1d4ed8;  --josh-bd:   rgba(29,78,216,0.2);
+    --cesar-bg:   rgba(220,252,231,0.8); --cesar-t:   #15803d;  --cesar-bd:  rgba(21,128,61,0.2);
+    --megan-bg:   rgba(255,237,213,0.8); --megan-t:   #c2410c;  --megan-bd:  rgba(194,65,12,0.2);
+    --michael-bg: rgba(254,226,226,0.8); --michael-t: #b91c1c;  --michael-bd:rgba(185,28,28,0.2);
+    --aliyah-bg:  rgba(237,233,254,0.8); --aliyah-t:  #6d28d9;  --aliyah-bd: rgba(109,40,217,0.2);
+    --robert-bg:  rgba(204,251,241,0.8); --robert-t:  #0f766e;  --robert-bd: rgba(15,118,110,0.2);
+    --mikki-bg:   rgba(254,243,199,0.8); --mikki-t:   #b45309;  --mikki-bd:  rgba(180,83,9,0.2);
+    --brandon-bg: rgba(231,219,209,0.8); --brandon-t: #7c3a1e;  --brandon-bd:rgba(120,58,30,0.2);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { transition: background 0.3s, color 0.3s; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 10%, var(--mesh1) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, var(--mesh2) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 60% 20%, var(--mesh3) 0%, transparent 50%);
+    transition: opacity 0.3s;
+  }
+
+  .page-wrap { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 40px 32px 80px; }
+
+  /* ── Theme toggle ── */
+  .theme-toggle {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--toggle-bg);
+    border: 1px solid var(--toggle-bd);
+    border-radius: 99px; padding: 6px 14px;
+    cursor: pointer; font-size: 13px; font-weight: 500;
+    color: var(--text-sub);
+    transition: all 0.2s;
+    user-select: none;
+    box-shadow: var(--card-shadow);
+  }
+  .theme-toggle:hover { color: var(--text); border-color: var(--accent); }
+  .toggle-track {
+    width: 36px; height: 20px;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 99px; position: relative;
+    transition: background 0.3s;
+  }
+  [data-theme="light"] .toggle-track { background: var(--accent); }
+  .toggle-thumb {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: white;
+    position: absolute; top: 2px; left: 2px;
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+  [data-theme="light"] .toggle-thumb { transform: translateX(16px); }
+  .icon-sun  { opacity: var(--sun-op);  transition: opacity 0.3s; font-size: 15px; }
+  .icon-moon { opacity: var(--moon-op); transition: opacity 0.3s; font-size: 14px; }
+
+  /* ── Header ── */
+  .header { margin-bottom: 36px; }
+  .header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+
+  h1[contenteditable] {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700; letter-spacing: -0.03em;
+    color: var(--text); outline: none;
+    border-bottom: 2px dashed var(--border2);
+    padding-bottom: 4px; cursor: text;
+    transition: border-color 0.2s, color 0.3s;
+    display: inline-block;
+  }
+  h1[contenteditable]:focus { border-color: var(--accent2); }
+  .edit-hint { font-size: 11px; color: var(--text-dim); margin-top: 4px; letter-spacing: 0.04em; }
+  .subtitle { color: var(--text-sub); font-size: 13px; margin-top: 6px; font-weight: 300; }
+
+  /* ── Stat cards ── */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+  @media(max-width:700px){ .cards { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 20px 24px;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s, border-color 0.3s;
+    box-shadow: var(--card-shadow);
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--card-accent, var(--accent)); border-radius: 16px 16px 0 0;
+  }
+  .card-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 8px; font-weight: 500; }
+  .card-value { font-size: 36px; font-weight: 700; letter-spacing: -0.04em; color: var(--card-color, var(--accent2)); line-height: 1; }
+  .card-sub { font-size: 12px; color: var(--text-sub); margin-top: 6px; font-weight: 300; }
+  .card-bar { height: 3px; background: var(--border); border-radius: 99px; margin-top: 12px; }
+  .card-bar-fill { height: 3px; border-radius: 99px; background: var(--card-accent, var(--accent)); transition: width 1s cubic-bezier(0.4,0,0.2,1); width: 0; }
+
+  /* ── Legend ── */
+  .legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; align-items: center; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-sub); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── Section headers ── */
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; margin-top: 40px; }
+  .section-header:first-of-type { margin-top: 0; }
+  .section-title { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+  .section-count {
+    font-size: 11px; background: var(--surface2);
+    border: 1px solid var(--border); border-radius: 99px;
+    padding: 2px 10px; color: var(--text-sub);
+    transition: background 0.3s;
+  }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+  .section-note {
+    font-size: 12px; color: var(--text-sub); margin-bottom: 12px;
+    padding: 10px 14px; background: rgba(139,92,246,0.08);
+    border: 1px solid rgba(139,92,246,0.2); border-radius: 8px;
+  }
+  [data-theme="light"] .section-note { background: rgba(109,40,217,0.05); border-color: rgba(109,40,217,0.15); }
+
+  /* ── Table ── */
+  .table-wrap {
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface); margin-bottom: 8px;
+    box-shadow: var(--card-shadow);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  table { border-collapse: collapse; width: 100%; }
+
+  thead th {
+    background: var(--thead-bg);
+    padding: 13px 14px; font-size: 11px;
+    font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--text-sub);
+    text-align: left; cursor: pointer; user-select: none;
+    white-space: nowrap; border-bottom: 1px solid var(--border);
+    transition: color 0.15s, background 0.15s;
+  }
+  thead th:hover { color: var(--text); background: rgba(99,102,241,0.06); }
+  thead th.sort-asc, thead th.sort-desc { color: var(--accent); }
+  .sort-icon { margin-left: 4px; opacity: 0.3; font-size: 10px; }
+  thead th.sort-asc  .sort-icon::after { content: "▲"; opacity: 1; }
+  thead th.sort-desc .sort-icon::after { content: "▼"; opacity: 1; }
+  thead th:not(.sort-asc):not(.sort-desc) .sort-icon::after { content: "⇅"; }
+
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+  tbody tr:nth-child(even) { background: var(--row-alt); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--row-hover); }
+  td { padding: 11px 14px; font-size: 13px; vertical-align: middle; color: var(--text); transition: color 0.3s; }
+
+  .row-num { color: var(--text-dim); font-size: 11px; font-family: 'DM Mono', monospace; text-align: center; width: 36px; }
+  .name-cell { font-weight: 500; color: var(--text); font-size: 13px; }
+
+  /* ── Leader badge ── */
+  .badge-leader {
+    display: inline-flex; align-items: center;
+    font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 99px;
+    white-space: nowrap; letter-spacing: 0.01em;
+    transition: background 0.3s, color 0.3s;
+  }
+  .leader-josh    { background: var(--josh-bg);    color: var(--josh-t);    border: 1px solid var(--josh-bd); }
+  .leader-cesar   { background: var(--cesar-bg);   color: var(--cesar-t);   border: 1px solid var(--cesar-bd); }
+  .leader-megan   { background: var(--megan-bg);   color: var(--megan-t);   border: 1px solid var(--megan-bd); }
+  .leader-michael { background: var(--michael-bg); color: var(--michael-t); border: 1px solid var(--michael-bd); }
+  .leader-aliyah  { background: var(--aliyah-bg);  color: var(--aliyah-t);  border: 1px solid var(--aliyah-bd); }
+  .leader-robert  { background: var(--robert-bg);  color: var(--robert-t);  border: 1px solid var(--robert-bd); }
+  .leader-mikki   { background: var(--mikki-bg);   color: var(--mikki-t);   border: 1px solid var(--mikki-bd); }
+  .leader-brandon { background: var(--brandon-bg); color: var(--brandon-t); border: 1px solid var(--brandon-bd); }
+  .leader-unknown { background: var(--surface2);   color: var(--text-dim);  border: 1px solid var(--border); }
+
+  /* ── Outlier badges ── */
+  .badge-type {
+    display: inline-flex; align-items: center;
+    font-size: 10px; font-weight: 700; padding: 2px 8px;
+    border-radius: 99px; margin-left: 6px; vertical-align: middle;
+    letter-spacing: 0.04em;
+  }
+  .badge-shifts { background: rgba(139,92,246,0.15); color: #8b5cf6; border: 1px solid rgba(139,92,246,0.3); }
+  .badge-hours  { background: rgba(239,68,68,0.12);  color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+  [data-theme="light"] .badge-shifts { background: rgba(109,40,217,0.1); color: #6d28d9; }
+  [data-theme="light"] .badge-hours  { background: rgba(185,28,28,0.08); color: #b91c1c; }
+
+  /* ── Pct bar ── */
+  .pct-wrap { display: flex; align-items: center; gap: 8px; }
+  .pct-val { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; min-width: 34px; }
+  .pct-val.high   { color: var(--red); }
+  .pct-val.medium { color: var(--orange); }
+  .bar-bg { flex: 1; max-width: 56px; height: 4px; background: var(--border); border-radius: 99px; overflow: hidden; }
+  .bar-fill { height: 4px; border-radius: 99px; }
+  .pct-median { font-size: 10px; color: var(--text-dim); white-space: nowrap; }
+
+  /* ── Editable cells ── */
+  .cell-date { background: var(--yellow-bg); }
+  input[type="date"] {
+    background: transparent; border: none; outline: none;
+    font-family: 'DM Sans', sans-serif; font-size: 12px;
+    color: var(--text); width: 130px; cursor: pointer; padding: 2px 0;
+    transition: color 0.3s;
+  }
+  [data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.6) sepia(1) hue-rotate(200deg); cursor: pointer; }
+  [data-theme="light"] input[type="date"]::-webkit-calendar-picker-indicator { filter: none; cursor: pointer; }
+  input[type="date"]:focus { color: var(--accent); }
+
+  .cell-pcn { text-align: center; }
+  input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; accent-color: var(--accent); border-radius: 4px; }
+
+  .cell-notes { min-width: 160px; }
+  textarea.notes-field {
+    width: 100%; min-height: 34px; max-height: 100px;
+    background: var(--yellow-bg); border: 1px solid var(--yellow-br);
+    border-radius: 6px; padding: 5px 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 11px;
+    color: var(--text); resize: vertical; outline: none;
+    transition: border-color 0.15s, background 0.15s, color 0.3s;
+    box-sizing: border-box;
+  }
+  textarea.notes-field::placeholder { color: var(--text-dim); }
+  textarea.notes-field:focus { border-color: var(--accent); background: rgba(99,102,241,0.06); }
+
+  /* ── Animations ── */
+  @keyframes fadeUp { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
+  .card { animation: fadeUp 0.5s ease both; }
+  .card:nth-child(1){ animation-delay:0.05s; }
+  .card:nth-child(2){ animation-delay:0.10s; }
+  .card:nth-child(3){ animation-delay:0.15s; }
+  .table-wrap { animation: fadeUp 0.5s 0.2s ease both; }
+
+  @media print {
+    body::before { display: none; }
+    .theme-toggle { display: none; }
+    .card, .table-wrap { box-shadow: none; border: 1px solid #ddd; background: white; }
+    input[type="date"], textarea.notes-field { color: black; background: #fffde7; }
+  }
+
+  /* ── Edit Mode ── */
+  .edit-toggle-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--yellow-bg); border: 1px solid var(--yellow-br);
+    border-radius: 99px; padding: 7px 16px; cursor: pointer;
+    font-size: 12px; font-weight: 600; color: #fde68a;
+    font-family: 'DM Sans', sans-serif; transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .edit-toggle-btn:hover { background: rgba(250,204,21,0.15); }
+  .edit-toggle-btn.on { background: rgba(250,204,21,0.2); border-color: rgba(250,204,21,0.5); }
+
+  .edit-banner {
+    display: none; align-items: center; gap: 10px; flex-wrap: wrap;
+    background: var(--yellow-bg); border: 1px solid var(--yellow-br);
+    border-radius: 10px; padding: 8px 16px; margin-bottom: 14px;
+    font-size: 12px; color: #fde68a;
+  }
+  .edit-banner.visible { display: flex; }
+
+  [data-edit="true"] td.pct-cell { cursor: pointer; }
+  [data-edit="true"] td.pct-cell:hover { background: rgba(250,204,21,0.05); }
+  [data-edit="true"] td.pct-cell:hover .pct-wrap::after {
+    content: " ✏"; font-size: 10px; color: var(--text-dim);
+  }
+  td.pct-cell input.pct-input {
+    width: 60px; background: rgba(250,204,21,0.1);
+    border: 1px solid rgba(250,204,21,0.4); border-radius: 6px;
+    padding: 4px 6px; font-family: 'DM Mono', monospace;
+    font-size: 13px; color: var(--text); outline: none; text-align: center;
+  }
+
+
+  /* ── Delete Row ── */
+  .delete-btn {
+    display: none;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3);
+    color: #ef4444; font-size: 14px; line-height: 1;
+    cursor: pointer; align-items: center; justify-content: center;
+    transition: all 0.15s; flex-shrink: 0;
+    padding: 0; font-family: monospace;
+  }
+  .delete-btn:hover { background: rgba(239,68,68,0.25); transform: scale(1.1); }
+  [data-edit="true"] .delete-btn { display: flex; }
+
+
+  /* ── Leader Dropdown ── */
+  .leader-cell { position: relative; }
+  select.leader-select {
+    appearance: none; -webkit-appearance: none;
+    font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600;
+    padding: 3px 24px 3px 10px; border-radius: 99px;
+    border: 1px solid transparent; cursor: pointer;
+    outline: none; transition: all 0.2s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 8px;
+  }
+  select.leader-select:focus { box-shadow: 0 0 0 2px var(--accent); }
+  /* Hide dropdown arrow in non-edit mode */
+  .leader-badge-wrap .leader-select { display: none; }
+  .leader-badge-wrap .badge-leader  { display: inline-flex; }
+  [data-edit="true"] .leader-badge-wrap .leader-select { display: inline-flex; }
+  [data-edit="true"] .leader-badge-wrap .badge-leader  { display: none; }
+
+
+</style>
+<style>
+  /* ── Password screen ── */
+  #lock-screen {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    background: #0a0a0f;
+    font-family: 'DM Sans', sans-serif;
+  }
+  #lock-screen.hidden { display: none; }
+  .lock-card {
+    background: #13131a; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px; padding: 48px 44px;
+    width: 100%; max-width: 400px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    text-align: center; animation: lockFadeIn 0.4s ease;
+  }
+  @keyframes lockFadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .lock-icon { font-size: 40px; margin-bottom: 16px; }
+  .lock-title { font-size: 22px; font-weight: 700; color: #e8e8f0; letter-spacing: -0.03em; margin-bottom: 6px; }
+  .lock-subtitle { font-size: 13px; color: #7878a0; margin-bottom: 32px; font-weight: 300; }
+  .lock-input-wrap { position: relative; margin-bottom: 16px; }
+  #lock-input {
+    width: 100%; padding: 14px 48px 14px 18px;
+    background: #1c1c26; border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; font-family: 'DM Sans', sans-serif;
+    font-size: 15px; color: #e8e8f0; outline: none;
+    letter-spacing: 0.1em; transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+  }
+  #lock-input:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.15); }
+  #lock-input.error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.15); animation: shake 0.4s ease; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+  .eye-btn {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; color: #4a4a6a;
+    font-size: 16px; transition: color 0.2s; padding: 4px;
+  }
+  .eye-btn:hover { color: #7878a0; }
+  #lock-btn {
+    width: 100%; padding: 14px; background: #6366f1; border: none;
+    border-radius: 12px; font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 600; color: white; cursor: pointer;
+    transition: background 0.2s, transform 0.1s; letter-spacing: 0.01em;
+  }
+  #lock-btn:hover { background: #4f46e5; }
+  #lock-btn:active { transform: scale(0.98); }
+  .lock-error { font-size: 12px; color: #ef4444; margin-top: 10px; min-height: 18px; }
+  .lock-hint { font-size: 11px; color: #4a4a6a; margin-top: 24px; }
+
+  /* ── Mobile / small screen table scrolling ── */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table { min-width: 900px; }
+
+  /* Freeze the name column */
+  thead th:nth-child(2),
+  tbody td:nth-child(2) {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: var(--surface);
+  }
+  thead th:nth-child(2) {
+    background: var(--thead-bg);
+    z-index: 3;
+  }
+  tbody tr:nth-child(even) td:nth-child(2) {
+    background: color-mix(in srgb, var(--surface) 97%, var(--text) 3%);
+  }
+  tbody tr:hover td:nth-child(2) {
+    background: var(--row-hover);
+  }
+
+  /* Scroll hint on small screens */
+  .scroll-hint {
+    display: none;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: right;
+    margin-bottom: 6px;
+  }
+  @media (max-width: 900px) {
+    .scroll-hint { display: block; }
+    .page-wrap { padding: 24px 16px 60px; }
+    .cards { grid-template-columns: 1fr 1fr; }
+    h1[contenteditable] { font-size: 20px; }
+  }
+  @media (max-width: 600px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Password screen -->
+<div id="lock-screen">
+  <div class="lock-card">
+    <div class="lock-icon">🔒</div>
+    <div class="lock-title">Leadership Access Only</div>
+    <div class="lock-subtitle">Bellevue Attendance Tracker &mdash; Enter your access password to continue</div>
+    <div class="lock-input-wrap">
+      <input type="password" id="lock-input" placeholder="Enter password" autocomplete="current-password">
+      <button class="eye-btn" id="eye-btn" title="Show/hide password">👁</button>
+    </div>
+    <button id="lock-btn">Unlock Tracker</button>
+    <div class="lock-error" id="lock-error"></div>
+    <div class="lock-hint">Contact your store manager if you need access.</div>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <h1 contenteditable="true" spellcheck="false">R003 Attendance Tracker: May 2026</h1></div>
+
+</div>
+
+  <div style="margin-bottom: 40px;">
+    <h2 style="font-size: 18px; margin-bottom: 20px; color: var(--text);">PCN Completion by Connection Leader</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+      <div class="leader-score-card" data-leader="Josh Hansen">
+        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--text);">Josh Hansen</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+          <span class="pcn-count" style="font-size: 24px; font-weight: 700; color: var(--accent);">0</span>
+          <span style="font-size: 12px; color: var(--text-dim);">of 7</span>
+        </div>
+        <div style="background: var(--surface2); border-radius: 4px; height: 6px; overflow: hidden; margin-bottom: 8px;">
+          <div class="pcn-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ef4444 0%, #f97316 50%, #22c55e 100%); transition: width 0.3s ease;"></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-dim); text-align: center;">
+          <span class="pcn-pct">0</span>% Complete
+        </div>
+      </div>
+      <div class="leader-score-card" data-leader="Robert Powell">
+        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--text);">Robert Powell</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+          <span class="pcn-count" style="font-size: 24px; font-weight: 700; color: var(--accent);">0</span>
+          <span style="font-size: 12px; color: var(--text-dim);">of 11</span>
+        </div>
+        <div style="background: var(--surface2); border-radius: 4px; height: 6px; overflow: hidden; margin-bottom: 8px;">
+          <div class="pcn-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ef4444 0%, #f97316 50%, #22c55e 100%); transition: width 0.3s ease;"></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-dim); text-align: center;">
+          <span class="pcn-pct">0</span>% Complete
+        </div>
+      </div>
+      <div class="leader-score-card" data-leader="Mikki King">
+        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--text);">Mikki King</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+          <span class="pcn-count" style="font-size: 24px; font-weight: 700; color: var(--accent);">0</span>
+          <span style="font-size: 12px; color: var(--text-dim);">of 10</span>
+        </div>
+        <div style="background: var(--surface2); border-radius: 4px; height: 6px; overflow: hidden; margin-bottom: 8px;">
+          <div class="pcn-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ef4444 0%, #f97316 50%, #22c55e 100%); transition: width 0.3s ease;"></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-dim); text-align: center;">
+          <span class="pcn-pct">0</span>% Complete
+        </div>
+      </div>
+      <div class="leader-score-card" data-leader="Megan Bontrager">
+        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--text);">Megan Bontrager</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+          <span class="pcn-count" style="font-size: 24px; font-weight: 700; color: var(--accent);">0</span>
+          <span style="font-size: 12px; color: var(--text-dim);">of 11</span>
+        </div>
+        <div style="background: var(--surface2); border-radius: 4px; height: 6px; overflow: hidden; margin-bottom: 8px;">
+          <div class="pcn-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ef4444 0%, #f97316 50%, #22c55e 100%); transition: width 0.3s ease;"></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-dim); text-align: center;">
+          <span class="pcn-pct">0</span>% Complete
+        </div>
+      </div>
+      <div class="leader-score-card" data-leader="Cesar Honores">
+        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--text);">Cesar Honores</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+          <span class="pcn-count" style="font-size: 24px; font-weight: 700; color: var(--accent);">0</span>
+          <span style="font-size: 12px; color: var(--text-dim);">of 12</span>
+        </div>
+        <div style="background: var(--surface2); border-radius: 4px; height: 6px; overflow: hidden; margin-bottom: 8px;">
+          <div class="pcn-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ef4444 0%, #f97316 50%, #22c55e 100%); transition: width 0.3s ease;"></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-dim); text-align: center;">
+          <span class="pcn-pct">0</span>% Complete
+        </div>
+      </div>
+      <div class="leader-score-card" data-leader="Aliyah Petersen">
+        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--text);">Aliyah Petersen</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+          <span class="pcn-count" style="font-size: 24px; font-weight: 700; color: var(--accent);">0</span>
+          <span style="font-size: 12px; color: var(--text-dim);">of 12</span>
+        </div>
+        <div style="background: var(--surface2); border-radius: 4px; height: 6px; overflow: hidden; margin-bottom: 8px;">
+          <div class="pcn-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ef4444 0%, #f97316 50%, #22c55e 100%); transition: width 0.3s ease;"></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-dim); text-align: center;">
+          <span class="pcn-pct">0</span>% Complete
+        </div>
+      </div>
+      <div class="leader-score-card" data-leader="Michael Reed">
+        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--text);">Michael Reed</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+          <span class="pcn-count" style="font-size: 24px; font-weight: 700; color: var(--accent);">0</span>
+          <span style="font-size: 12px; color: var(--text-dim);">of 10</span>
+        </div>
+        <div style="background: var(--surface2); border-radius: 4px; height: 6px; overflow: hidden; margin-bottom: 8px;">
+          <div class="pcn-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ef4444 0%, #f97316 50%, #22c55e 100%); transition: width 0.3s ease;"></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-dim); text-align: center;">
+          <span class="pcn-pct">0</span>% Complete
+        </div>
+      </div>
+      <div class="leader-score-card" data-leader="Brandon Hughes">
+        <div style="font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--text);">Brandon Hughes</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+          <span class="pcn-count" style="font-size: 24px; font-weight: 700; color: var(--accent);">0</span>
+          <span style="font-size: 12px; color: var(--text-dim);">of 12</span>
+        </div>
+        <div style="background: var(--surface2); border-radius: 4px; height: 6px; overflow: hidden; margin-bottom: 8px;">
+          <div class="pcn-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ef4444 0%, #f97316 50%, #22c55e 100%); transition: width 0.3s ease;"></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-dim); text-align: center;">
+          <span class="pcn-pct">0</span>% Complete
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <div class="edit-hint">✏️ click title to rename</div>
+      </div>
+      <!-- Theme toggle -->
+      <button class="theme-toggle" id="themeToggle" title="Switch theme" aria-label="Toggle light/dark mode">
+        <span class="icon-sun">☀️</span>
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        <span class="icon-moon">🌙</span>
+      </button>
+    </div>
+    <p id="save-status" style="font-size:12px;font-weight:500;letter-spacing:0.03em;margin-bottom:4px;opacity:0;transition:opacity 0.3s;min-height:16px;"></p>
+  <p class="subtitle">Employees exceeding store median on Hours Impacted (&gt;4%) and/or Shifts Impacted (&gt;17%) &nbsp;·&nbsp; Click column headers to sort &nbsp;·&nbsp; Yellow fields are editable</p>
+  </div>
+
+  <!-- Stat cards -->
+  <div class="cards">
+    <div class="card" style="--card-accent:#3b82f6;--card-color:#3b82f6;">
+      <div class="card-label">Store Median — Hours Impacted</div>
+      <div class="card-value">4%</div>
+      <div class="card-sub">Flagged employees range 5% – 75%</div>
+      <div class="card-bar"><div class="card-bar-fill" style="--card-accent:#3b82f6;" data-w="4"></div></div>
+    </div>
+    <div class="card" style="--card-accent:#10b981;--card-color:#10b981;">
+      <div class="card-label">Store Median — Shifts Impacted</div>
+      <div class="card-value">17%</div>
+      <div class="card-sub">Flagged employees range 24% – 100%</div>
+      <div class="card-bar"><div class="card-bar-fill" style="--card-accent:#10b981;" data-w="17"></div></div>
+    </div>
+    <div class="card" style="--card-accent:#8b5cf6;--card-color:#8b5cf6;">
+      <div class="card-label">Employees Above Both Medians</div>
+      <div class="card-value" id="countVal">—</div>
+      <div class="card-sub">Out of 86 total team members</div>
+      <div class="card-bar"><div class="card-bar-fill" style="--card-accent:#8b5cf6;" id="countBar" data-w="0"></div></div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div> ≥50% impacted</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f97316"></div> ≥30% impacted</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#8b5cf6"></div> Single-metric outlier</div>
+    <div class="legend-item" style="margin-left:auto;font-size:11px;color:var(--text-dim);">Yellow cells are editable &nbsp;·&nbsp; Click headers to sort</div>
+  </div>
+
+  <!-- Main table -->
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+    <div class="section-header" style="margin:0;flex:1;">
+      <span class="section-title">Above Both Medians</span>
+      <span class="section-count" id="mainCount">—</span>
+      <div class="section-line"></div>
+    </div>
+    <button class="edit-toggle-btn" id="editToggleBtn">✏️ Edit Data</button>
+  </div>
+  <div class="edit-banner" id="editBanner">
+    ✏️ Edit mode — click any <strong>Hours %</strong> or <strong>Shifts %</strong> value to update it. Press Enter or click away to confirm.
+    <button class="edit-toggle-btn on" id="editDoneBtn" style="margin-left:auto;">✓ Done</button>
+  </div>
+  <div class="scroll-hint">← scroll to see more →</div>
+  <div class="table-wrap">
+    <table id="mainTable">
+      <thead><tr>
+        <th data-col="0">#<span class="sort-icon"></span></th>
+        <th data-col="1">Name<span class="sort-icon"></span></th>
+        <th data-col="2">Connection Leader<span class="sort-icon"></span></th>
+        <th data-col="3">Hours Impacted<span class="sort-icon"></span></th>
+        <th data-col="4">Shifts Impacted<span class="sort-icon"></span></th>
+        <th data-col="5">Coach Connected Date<span class="sort-icon"></span></th>
+        <th data-col="6" style="text-align:center">PCN in Box<span class="sort-icon"></span></th>
+        <th data-col="7">Notes<span class="sort-icon"></span></th>
+        <th style="width:36px;"></th>
+      </tr></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Outliers -->
+  <div class="section-header" style="margin-top:48px;">
+    <span class="section-title" style="color:#8b5cf6;">Single-Metric Outliers</span>
+    <span class="section-count" id="outlierCount">—</span>
+    <div class="section-line" style="background:rgba(139,92,246,0.3);"></div>
+  </div>
+  <div class="section-note">These employees have a significant spike on one metric — still worth a conversation even if they don't exceed both medians.</div>
+  <div class="scroll-hint">← scroll to see more →</div>
+  <div class="table-wrap" style="border-color:rgba(139,92,246,0.2);">
+    <table id="outlierTable">
+      <thead style="background:rgba(139,92,246,0.08);"><tr>
+        <th data-col="0">#<span class="sort-icon"></span></th>
+        <th data-col="1">Name<span class="sort-icon"></span></th>
+        <th data-col="2">Connection Leader<span class="sort-icon"></span></th>
+        <th data-col="3">Hours Impacted<span class="sort-icon"></span></th>
+        <th data-col="4">Shifts Impacted<span class="sort-icon"></span></th>
+        <th data-col="5">Coach Connected Date<span class="sort-icon"></span></th>
+        <th data-col="6" style="text-align:center">PCN in Box<span class="sort-icon"></span></th>
+        <th data-col="7">Notes<span class="sort-icon"></span></th>
+        <th style="width:36px;"></th>
+      </tr></thead>
+      <tbody id="outlierBody"></tbody>
+    </table>
+  </div>
+
+</div>
+<script>
+
+  // ── Password protection ───────────────────────────────────────────────────
+  (function(){
+    const PASSWORD = "R003Bellevue"; // ← change this to whatever you want
+    const SESSION_KEY = "tracker_auth";
+
+    const screen = document.getElementById("lock-screen");
+    const input  = document.getElementById("lock-input");
+    const btn    = document.getElementById("lock-btn");
+    const errMsg = document.getElementById("lock-error");
+    const eyeBtn = document.getElementById("eye-btn");
+
+    // Already authenticated this session?
+    if (sessionStorage.getItem(SESSION_KEY) === "true") {
+      screen.classList.add("hidden");
+    }
+
+    function tryUnlock() {
+      if (input.value === PASSWORD) {
+        sessionStorage.setItem(SESSION_KEY, "true");
+        screen.style.opacity = "0";
+        screen.style.transition = "opacity 0.4s ease";
+        setTimeout(() => { screen.classList.add("hidden"); initSync(); }, 400);
+      } else {
+        errMsg.textContent = "Incorrect password. Please try again.";
+        input.classList.add("error");
+        input.value = "";
+        setTimeout(() => input.classList.remove("error"), 600);
+      }
+    }
+
+    btn.addEventListener("click", tryUnlock);
+    input.addEventListener("keydown", e => { if(e.key==="Enter") tryUnlock(); });
+    input.addEventListener("input", () => { errMsg.textContent = ""; });
+
+    // Toggle show/hide password
+    eyeBtn.addEventListener("click", () => {
+      const show = input.type === "password";
+      input.type = show ? "text" : "password";
+      eyeBtn.textContent = show ? "🙈" : "👁";
+    });
+  })();
+
+
+  // ── JSONBin Sync ──────────────────────────────────────────────────────────
+  const BIN_ID  = "6a1f4795da38895dfe7dce10";
+  const API_KEY = "$2a$10$njUBTSibQby8yGGmhyDnmeFPE2FXiJgYiKNBN9xkcS32ezVkBP3ke";
+  const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
+  let saveTimer = null;
+  let isSaving  = false;
+
+  function showStatus(msg, color) {
+    const el = document.getElementById("save-status");
+    if (!el) return;
+    el.textContent = msg;
+    el.style.color = color || "var(--text-sub)";
+    el.style.opacity = "1";
+  }
+  function hideStatus() {
+    const el = document.getElementById("save-status");
+    if (el) { el.style.opacity = "0"; }
+  }
+
+  function collectData() {
+    const rows = {};
+    document.querySelectorAll("tbody tr").forEach(tr => {
+      const name = tr.dataset.name;
+      if (!name) return;
+      const date  = tr.querySelector("input[type=date]")?.value || "";
+      const pcn   = tr.querySelector("input[type=checkbox]")?.checked || false;
+      const notes = tr.querySelector("textarea")?.value || "";
+      rows[name] = { date, pcn, notes };
+    });
+    return rows;
+  }
+
+  function applyData(rows) {
+    document.querySelectorAll("tbody tr").forEach(tr => {
+      const name = tr.dataset.name;
+      if (!name || !rows[name]) return;
+      const d = rows[name];
+      const dateInput = tr.querySelector("input[type=date]");
+      const cbInput   = tr.querySelector("input[type=checkbox]");
+      const textarea  = tr.querySelector("textarea");
+      if (dateInput  && d.date  !== undefined) dateInput.value   = d.date;
+      if (cbInput    && d.pcn   !== undefined) cbInput.checked   = d.pcn;
+      if (textarea   && d.notes !== undefined) textarea.value    = d.notes;
+    });
+  }
+
+  async function loadData() {
+    showStatus("Loading…", "var(--text-dim)");
+    try {
+      const res = await fetch(BIN_URL + "/latest", {
+        headers: { "X-Master-Key": API_KEY }
+      });
+      if (!res.ok) throw new Error("Load failed");
+      const json = await res.json();
+      const rows = json.record?.rows || {};
+      applyData(rows);
+      showStatus("✓ Up to date", "var(--accent2)");
+      setTimeout(hideStatus, 2000);
+    } catch(e) {
+      showStatus("⚠ Could not load saved data", "#f97316");
+      setTimeout(hideStatus, 3000);
+    }
+  }
+
+  async function saveData() {
+    if (isSaving) return;
+    isSaving = true;
+    showStatus("Saving…", "var(--text-dim)");
+    try {
+      const rows = collectData();
+      const res = await fetch(BIN_URL, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Master-Key": API_KEY
+        },
+        body: JSON.stringify({ rows })
+      });
+      if (!res.ok) throw new Error("Save failed");
+      showStatus("✓ Saved", "#10b981");
+      setTimeout(hideStatus, 2000);
+    } catch(e) {
+      showStatus("⚠ Save failed — check connection", "#ef4444");
+      setTimeout(hideStatus, 4000);
+    }
+    isSaving = false;
+  }
+
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveData, 1500);
+  }
+
+  // Attach listeners to all editable fields
+  function attachListeners() {
+    document.querySelectorAll("input[type=date], input[type=checkbox], textarea.notes-field")
+      .forEach(el => {
+        const evt = el.type === "checkbox" ? "change" : "input";
+        el.addEventListener(evt, scheduleSave);
+      });
+  }
+
+  // Load on page open (after unlock)
+  function initSync() {
+    attachListeners();
+    loadData();
+  }
+
+  // ── Theme toggle ──────────────────────────────────────────────────────────
+  const html = document.documentElement;
+  const btn  = document.getElementById("themeToggle");
+  const saved = localStorage.getItem("theme") || "dark";
+  html.setAttribute("data-theme", saved);
+
+  btn.addEventListener("click", () => {
+    const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+  });
+
+  // ── Data ──────────────────────────────────────────────────────────────────
+  const leaderMap = {
+    "McKellip, Jack": { name: "Josh Hansen", cls: "leader-josh" },
+    "Chun, Jay": { name: "Josh Hansen", cls: "leader-josh" },
+    "Quiroz, Salvador": { name: "Josh Hansen", cls: "leader-josh" },
+    "Garcia Alcala, Andres": { name: "Josh Hansen", cls: "leader-josh" },
+    "Kan, Emily": { name: "Josh Hansen", cls: "leader-josh" },
+    "Kerr, Hunter": { name: "Josh Hansen", cls: "leader-josh" },
+    "Franco Laureano, Leobardo": { name: "Josh Hansen", cls: "leader-josh" },
+    "Lopez, Alan": { name: "Robert Powell", cls: "leader-robert" },
+    "Morin, Alex": { name: "Robert Powell", cls: "leader-robert" },
+    "Litchard, Vincent": { name: "Robert Powell", cls: "leader-robert" },
+    "Black, Devonnie": { name: "Robert Powell", cls: "leader-robert" },
+    "Martinez, Camille": { name: "Robert Powell", cls: "leader-robert" },
+    "Townsend, Pearl": { name: "Robert Powell", cls: "leader-robert" },
+    "Austin, Kelly": { name: "Robert Powell", cls: "leader-robert" },
+    "Avila Sierra, Javier": { name: "Robert Powell", cls: "leader-robert" },
+    "Cape II, Louis": { name: "Robert Powell", cls: "leader-robert" },
+    "Manno, Joey": { name: "Robert Powell", cls: "leader-robert" },
+    "McWhorter, Jake": { name: "Robert Powell", cls: "leader-robert" },
+    "Noorani, Sahran": { name: "Mikki King", cls: "leader-mikki" },
+    "Lum, Michael": { name: "Mikki King", cls: "leader-mikki" },
+    "House, Kittie": { name: "Mikki King", cls: "leader-mikki" },
+    "Osman, Feima": { name: "Mikki King", cls: "leader-mikki" },
+    "Weigelt, Michael": { name: "Mikki King", cls: "leader-mikki" },
+    "Vazquez, Dan": { name: "Mikki King", cls: "leader-mikki" },
+    "Hubbell, Jeremy": { name: "Mikki King", cls: "leader-mikki" },
+    "Abdulazeez, Zahraa": { name: "Mikki King", cls: "leader-mikki" },
+    "Burgett, Beck": { name: "Mikki King", cls: "leader-mikki" },
+    "Iwasaki-Higbee, Jaytee": { name: "Mikki King", cls: "leader-mikki" },
+    "Martinez-Reyes, Arturo": { name: "Megan Bontrager", cls: "leader-megan" },
+    "Jin, Michael": { name: "Megan Bontrager", cls: "leader-megan" },
+    "Melasenko, Oksana": { name: "Megan Bontrager", cls: "leader-megan" },
+    "Tatman, Taylor": { name: "Megan Bontrager", cls: "leader-megan" },
+    "Underwood, Courtney": { name: "Megan Bontrager", cls: "leader-megan" },
+    "Lee, Sung": { name: "Megan Bontrager", cls: "leader-megan" },
+    "Dhir, Aniket": { name: "Megan Bontrager", cls: "leader-megan" },
+    "Tran, Jenna": { name: "Megan Bontrager", cls: "leader-megan" },
+    "Su, Travis": { name: "Megan Bontrager", cls: "leader-megan" },
+    "Safari, Arshiya": { name: "Megan Bontrager", cls: "leader-megan" },
+    "Samson, Liam": { name: "Megan Bontrager", cls: "leader-megan" },
+    "Lee, Esther": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Villafuerte, Aryana": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Khatib, Mariam": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Dyzon, Grace": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Lagade, Dj": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Sorbo, Rob": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Peppin, Justis": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Dzaferovic, Kenan": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Sanchez Arce, Lizbeth": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Aboli, Jesus": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Gattu, Kruthi": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Omega, Gabrielle": { name: "Cesar Honores", cls: "leader-cesar" },
+    "Carvalho, Eric": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Appleton, Jolene": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Yae, Hunter": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Chance, Kaitlin": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Brown, Andrew": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Tolba, Omar": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Knost, Noah": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Davis, Mike": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Witcher, Myles": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Torkmanzadeh, Nima": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Keene, Christian": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Wang, Angelica": { name: "Aliyah Petersen", cls: "leader-aliyah" },
+    "Maze, Nolan": { name: "Michael Reed", cls: "leader-michael" },
+    "Miller, Richard": { name: "Michael Reed", cls: "leader-michael" },
+    "Fields, Ronell": { name: "Michael Reed", cls: "leader-michael" },
+    "Kapusta, Jake": { name: "Michael Reed", cls: "leader-michael" },
+    "Gee, Tommy": { name: "Michael Reed", cls: "leader-michael" },
+    "Kumasaka, Mercedes": { name: "Michael Reed", cls: "leader-michael" },
+    "Nauman, Talia": { name: "Michael Reed", cls: "leader-michael" },
+    "Moore, Russell": { name: "Michael Reed", cls: "leader-michael" },
+    "Stewart, Nazhir": { name: "Michael Reed", cls: "leader-michael" },
+    "Le, Francis": { name: "Michael Reed", cls: "leader-michael" },
+    "Tran, Kin": { name: "Brandon Hughes", cls: "leader-brandon" },
+    "Scott, Tyler": { name: "Brandon Hughes", cls: "leader-brandon" },
+    "Uyeta, Andrew": { name: "Brandon Hughes", cls: "leader-brandon" },
+    "Rosales-Soltero, Alejandra": { name: "Brandon Hughes", cls: "leader-brandon" },
+    "Ferguson, Noah": { name: "Brandon Hughes", cls: "leader-brandon" },
+    "Robinson, Connie": { name: "Brandon Hughes", cls: "leader-brandon" },
+    "Coluccio, Ally": { name: "Brandon Hughes", cls: "leader-brandon" },
+    "Nicholas, Seth": { name: "Brandon Hughes", cls: "leader-brandon" },
+    "Moralez, Alicia": { name: "Brandon Hughes", cls: "leader-brandon" },
+    "Bulaon, Kenji": { name: "Brandon Hughes", cls: "leader-brandon" },
+    "Fougere, Antoine": { name: "Brandon Hughes", cls: "leader-brandon" },
+    "Ngo, Andy": { name: "Brandon Hughes", cls: "leader-brandon" }
+  };
+
+      const main = [
+      { name:"Moralez, Alicia", hours:11, shifts:100 },
+      { name:"McKellip, Jack", hours:75, shifts:75 },
+      { name:"Torkmanzadeh, Nima", hours:13, shifts:56 },
+      { name:"Uyeta, Andrew", hours:7, shifts:53 },
+      { name:"Franco Laureano, Leobardo", hours:11, shifts:44 },
+      { name:"House, Kittie", hours:17, shifts:40 },
+      { name:"Dyzon, Grace", hours:7, shifts:39 },
+      { name:"Su, Travis", hours:20, shifts:35 },
+      { name:"Knost, Noah", hours:5, shifts:35 },
+      { name:"Tolba, Omar", hours:5, shifts:33 },
+      { name:"Samson, Liam", hours:10, shifts:29 },
+      { name:"McWhorter, Jake", hours:8, shifts:28 },
+      { name:"Bulaon, Kenji", hours:8, shifts:27 },
+      { name:"Fields, Ronell", hours:19, shifts:25 },
+      { name:"Dzaferovic, Kenan", hours:15, shifts:25 },
+      { name:"Kapusta, Jake", hours:10, shifts:25 },
+      { name:"Safari, Arshiya", hours:10, shifts:22 },
+      { name:"Iwasaki-Higbee, Jaytee", hours:9, shifts:22 },
+      { name:"Sorbo, Rob", hours:8, shifts:22 },
+      { name:"Brown, Andrew", hours:7, shifts:22 },
+      { name:"Khatib, Mariam", hours:5, shifts:19 },
+      { name:"Lum, Michael", hours:14, shifts:18 },
+      { name:"Lagade, Dj", hours:6, shifts:18 },
+  ];
+
+      const outliers = [
+    { name:"Quiroz, Salvador", hours:1, shifts:63, flag:"shifts" },
+    { name:"Townsend, Pearl", hours:0, shifts:48, flag:"shifts" },
+    { name:"Nicholas, Seth", hours:0, shifts:37, flag:"shifts" },
+    { name:"Melasenko, Oksana", hours:3, shifts:35, flag:"shifts" },
+    { name:"Scott, Tyler", hours:1, shifts:33, flag:"shifts" },
+    { name:"Appleton, Jolene", hours:0, shifts:33, flag:"shifts" },
+    { name:"Ferguson, Noah", hours:0, shifts:33, flag:"shifts" },
+    { name:"Noorani, Sahran", hours:0, shifts:33, flag:"shifts" },
+    { name:"Black, Devonnie", hours:0, shifts:31, flag:"shifts" },
+    { name:"Fougere, Antoine", hours:0, shifts:26, flag:"shifts" },
+    { name:"Keene, Christian", hours:1, shifts:25, flag:"shifts" },
+    { name:"Aboli, Jesus", hours:0, shifts:25, flag:"shifts" },
+    { name:"Vazquez, Dan", hours:2, shifts:24, flag:"shifts" },
+    { name:"Chun, Jay", hours:1, shifts:24, flag:"shifts" },
+    { name:"Abdulazeez, Zahraa", hours:3, shifts:23, flag:"shifts" },
+    { name:"Lopez, Alan", hours:1, shifts:22, flag:"shifts" },
+    { name:"Hubbell, Jeremy", hours:0, shifts:22, flag:"shifts" },
+    { name:"Robinson, Connie", hours:18, shifts:17, flag:"hours" },
+    { name:"Morin, Alex", hours:13, shifts:15, flag:"hours" },
+    { name:"Gee, Tommy", hours:14, shifts:11, flag:"hours" },
+  ];
+
+  main.sort((a,b) => b.shifts-a.shifts || b.hours-a.hours);
+  outliers.sort((a,b) => b.shifts-a.shifts || b.hours-a.hours);
+
+  document.getElementById("countVal").textContent  = main.length;
+  document.getElementById("mainCount").textContent = main.length;
+  document.getElementById("outlierCount").textContent = outliers.length;
+  document.getElementById("countBar").dataset.w = (main.length/86*100).toFixed(1);
+
+  setTimeout(() => {
+    document.querySelectorAll('.card-bar-fill').forEach(el => el.style.width = el.dataset.w + '%');
+  }, 300);
+
+  function pctClass(v){ return v>=50?'high':v>=30?'medium':''; }
+  function barColor(v){ return v>=50?'#ef4444':v>=30?'#f97316':'#6366f1'; }
+
+  
+  
+
+
+  
+    return `<div class="pct-wrap">
+      <span class="pct-val ${pctClass(val)}">${val}%</span>
+      <div class="bar-bg"><div class="bar-fill" style="width:${val}%;background:${barColor(val)}"></div></div>
+      <span class="pct-median">vs ${median}%</span>
+    </div>`;
+  }
+
+  function buildRow(emp, i, isOutlier){
+    const l = leaderMap[emp.name] || { name:"—", cls:"leader-unknown" };
+    const badge = isOutlier
+      ? `<span class="badge-type badge-${emp.flag}">${emp.flag==='shifts'?'Shifts':'Hours'} Outlier</span>` : '';
+    const tr = document.createElement("tr");
+    tr.dataset.name=emp.name; tr.dataset.leader=l.name;
+    tr.dataset.hours=emp.hours; tr.dataset.shifts=emp.shifts;
+    tr.innerHTML = `
+      <td class="row-num">${i+1}</td>
+      <td><span class="name-cell">${emp.name}</span>${badge}</td>
+      <td class="leader-cell">
+        <div class="leader-badge-wrap">
+          <span class="badge-leader ${l.cls}">${l.name}</span>
+          <select class="leader-select ${l.cls}" onchange="updateLeader(this)" style="background-color:inherit;color:inherit;">
+            <option value=\"Megan Bontrager\">Megan Bontrager</option><option value=\"Cesar Honores\">Cesar Honores</option><option value=\"Aliyah Petersen\">Aliyah Petersen</option><option value=\"Michael Reed\">Michael Reed</option><option value=\"Josh Hansen\">Josh Hansen</option><option value=\"Robert Powell\">Robert Powell</option><option value=\"Mikki King\">Mikki King</option><option value=\"Brandon Hughes\">Brandon Hughes</option>
+          </select>
+        </div>
+      </td>
+      <td class="pct-cell" data-val="${emp.hours}" data-median="4">${renderPct(emp.hours,4)}</td>
+      <td class="pct-cell" data-val="${emp.shifts}" data-median="17">${renderPct(emp.shifts,17)}</td>
+      <td class="cell-date"><input type="date"></td>
+      <td class="cell-pcn"><input type="checkbox" style="width:18px;height:18px;cursor:pointer;"></td>
+      <td class="cell-notes"><textarea class="notes-field" placeholder="e.g. sick time submitted, clerical error, follow-up pending…"></textarea></td>
+      <td style="text-align:center;vertical-align:middle;"><button class="delete-btn" title="Remove this row">×</button></td>
+    `;
+    return tr;
+  }
+
+  const mainRows = main.map((e,i) => buildRow(e,i,false));
+mainRows.forEach(tr => {
+  const sel = tr.querySelector('select.leader-select');
+  if (sel) sel.value = tr.dataset.leader;
+});
+document.getElementById("tableBody").append(...mainRows);
+  const outlierRows = outliers.map((e,i) => buildRow(e,i,true));
+outlierRows.forEach(tr => {
+  const sel = tr.querySelector('select.leader-select');
+  if (sel) sel.value = tr.dataset.leader;
+});
+document.getElementById("outlierBody").append(...outlierRows);
+
+  function makeSortable(tableId){
+    const table=document.getElementById(tableId);
+    const tbody=table.querySelector("tbody");
+    const ths=table.querySelectorAll("thead th");
+    let sortCol=-1,sortDir=1;
+    ths.forEach((th,ci) => {
+      th.addEventListener("click",()=>{
+        sortDir = sortCol===ci ? sortDir*-1 : 1;
+        sortCol=ci;
+        ths.forEach(t=>t.classList.remove("sort-asc","sort-desc"));
+        th.classList.add(sortDir===1?"sort-asc":"sort-desc");
+        Array.from(tbody.querySelectorAll("tr")).sort((a,b)=>{
+          let av,bv;
+          if(ci===0){av=parseInt(a.querySelector(".row-num").textContent);bv=parseInt(b.querySelector(".row-num").textContent);}
+          else if(ci===1){av=a.dataset.name;bv=b.dataset.name;}
+          else if(ci===2){av=a.dataset.leader;bv=b.dataset.leader;}
+          else if(ci===3){av=parseFloat(a.dataset.hours);bv=parseFloat(b.dataset.hours);}
+          else if(ci===4){av=parseFloat(a.dataset.shifts);bv=parseFloat(b.dataset.shifts);}
+          else if(ci===5){av=a.querySelector("input[type=date]").value||"";bv=b.querySelector("input[type=date]").value||"";}
+          else if(ci===6){av=a.querySelector("input[type=checkbox]").checked?1:0;bv=b.querySelector("input[type=checkbox]").checked?1:0;}
+          else if(ci===7){av=a.querySelector("textarea").value||"";bv=b.querySelector("textarea").value||"";}
+          return av<bv?-sortDir:av>bv?sortDir:0;
+        }).forEach(r=>tbody.appendChild(r));
+      });
+    });
+  }
+  makeSortable("mainTable");
+  makeSortable("outlierTable");
+
+  // ── Edit Mode ─────────────────────────────────────────────────────────────
+  let editMode = false;
+  const editBtn  = document.getElementById("editToggleBtn");
+  const editDone = document.getElementById("editDoneBtn");
+  const editBanner = document.getElementById("editBanner");
+
+  function pctClassFromVal(v) { return v>=50?'high':v>=30?'medium':''; }
+  function barColorFromVal(v) { return v>=50?'#ef4444':v>=30?'#f97316':'#6366f1'; }
+
+  function rebuildPctCell(td) {
+    const val    = parseFloat(td.dataset.val);
+    const median = td.dataset.median;
+    td.innerHTML = `<div class="pct-wrap">
+      <span class="pct-val ${pctClassFromVal(val)}">${val}%</span>
+      <div class="bar-bg"><div class="bar-fill" style="width:${val}%;background:${barColorFromVal(val)}"></div></div>
+      <span class="pct-median">vs ${median}%</span>
+    </div>`;
+  }
+
+  function handlePctClick(e) {
+    const td = e.currentTarget;
+    if (td.querySelector('input')) return;
+    const cur = td.dataset.val;
+    td.innerHTML = `<input class="pct-input" type="number" min="0" max="100" step="1" value="${cur}">`;
+    const inp = td.querySelector('input');
+    inp.focus(); inp.select();
+    inp.addEventListener('blur', () => {
+      const newVal = parseFloat(inp.value);
+      if (!isNaN(newVal) && newVal >= 0 && newVal <= 100) {
+        td.dataset.val = newVal;
+        // Update dataset on the row too
+        const row = td.closest('tr');
+        if (td === row.cells[3]) row.dataset.hours = newVal;
+        if (td === row.cells[4]) row.dataset.shifts = newVal;
+      }
+      rebuildPctCell(td);
+    });
+    inp.addEventListener('keydown', e => { if(e.key==='Enter'||e.key==='Tab') inp.blur(); });
+    e.stopPropagation();
+  }
+
+  function handleDeleteRow(e) {
+    const row = e.currentTarget.closest('tr');
+    const name = row.dataset.name || row.querySelector('.name-cell')?.textContent || 'this employee';
+    if (confirm(`Remove ${name} from the tracker?`)) {
+      row.style.transition = 'opacity 0.3s, transform 0.3s';
+      row.style.opacity = '0';
+      row.style.transform = 'translateX(20px)';
+      setTimeout(() => {
+        row.remove();
+        // Renumber remaining rows
+        document.querySelectorAll('#tableBody .row-num, #outlierBody .row-num').forEach((el, i) => {
+          el.textContent = i + 1;
+        });
+      }, 300);
+    }
+  }
+
+  function setEditMode(on) {
+    editMode = on;
+    editBtn.textContent = on ? '✏️ Editing...' : '✏️ Edit Data';
+    editBtn.classList.toggle('on', on);
+    editBanner.classList.toggle('visible', on);
+
+    document.querySelectorAll('#tableBody td.pct-cell, #outlierBody td.pct-cell').forEach(td => {
+      td.closest('table').setAttribute('data-edit', on);
+      if (on) {
+        td.addEventListener('click', handlePctClick);
+      } else {
+        td.removeEventListener('click', handlePctClick);
+        const inp = td.querySelector('input');
+        if (inp) inp.blur();
+      }
+    });
+
+    // Wire up delete buttons
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      if (on) {
+        btn.addEventListener('click', handleDeleteRow);
+      } else {
+        btn.removeEventListener('click', handleDeleteRow);
+      }
+    });
+  }
+
+  // Sync select colors to match badge on load
+  document.querySelectorAll('select.leader-select').forEach(sel => {
+    const badge = sel.closest('.leader-badge-wrap').querySelector('.badge-leader');
+    const cls = Array.from(badge.classList).find(c => c.startsWith('leader-'));
+    if (cls) sel.className = 'leader-select ' + cls;
+    sel.style.backgroundColor = getComputedStyle(badge).backgroundColor;
+    sel.style.color = getComputedStyle(badge).color;
+  });
+
+  editBtn.addEventListener('click',  () => setEditMode(!editMode));
+  editDone.addEventListener('click', () => setEditMode(false));
+
+
+  // ── Leader reassignment ───────────────────────────────────────────────────
+  const leaderClsMap = {"Megan Bontrager":"leader-megan","Cesar Honores":"leader-cesar","Aliyah Petersen":"leader-aliyah","Michael Reed":"leader-michael","Josh Hansen":"leader-josh","Robert Powell":"leader-robert","Mikki King":"leader-mikki","Brandon Hughes":"leader-brandon"};
+
+  window.updateLeader = function(sel) {
+    const newLeader = sel.value;
+    const newCls    = leaderClsMap[newLeader] || 'leader-unknown';
+    const wrap      = sel.closest('.leader-badge-wrap');
+    const badge     = wrap.querySelector('.badge-leader');
+    const row       = sel.closest('tr');
+
+    // Update badge
+    badge.textContent = newLeader;
+    badge.className   = 'badge-leader ' + newCls;
+
+    // Update select styling
+    sel.className = 'leader-select ' + newCls;
+
+    // Update row dataset
+    row.dataset.leader = newLeader;
+  };
+
+
+  // ── Pre-populated data ────────────────────────────────────────────────────
+  const prefillData = {
+    "McKellip, Jack":            { checked: true, note: "LOA" },
+    "House, Kittie":             { checked: true, note: "LOA not submitted accurately, Kittie following up with Sedgwick to try to correct" },
+    "Franco Laureano, Leobardo": { date: "2026-06-02", checked: true, note: "Will submit Regional for 3 tardies and 1 callout from May. No time submitted yet (6/9)" },
+    "Su, Travis":                { date: "2026-06-09", checked: true },
+    "Nauman, Talia":             { checked: true, note: "LOA, TBD" },
+    "Underwood, Courtney":       { checked: true, note: "Submitted time - no longer needed" },
+  };
+
+  function applyPrefill() {
+    document.querySelectorAll("#tableBody tr, #outlierBody tr").forEach(tr => {
+      const name = tr.dataset.name;
+      if (!name || !prefillData[name]) return;
+      const d = prefillData[name];
+      if (d.date) {
+        const dateInp = tr.querySelector("input[type=date]");
+        if (dateInp) dateInp.value = d.date;
+      }
+      if (d.checked) {
+        const cb = tr.querySelector("input[type=checkbox]");
+        if (cb) cb.checked = true;
+      }
+      if (d.note) {
+        const ta = tr.querySelector("textarea");
+        if (ta) ta.value = d.note;
+      }
+    });
+  }
+
+  // Run after rows are appended
+  setTimeout(applyPrefill, 50);
+
+
+  // Update scorecard on PCN checkbox change
+  document.addEventListener('change', function(e){
+    if(e.target.type === 'checkbox' && e.target.closest('.cell-pcn')) {
+      updateScorecard();
+    }
+  });
+  
+  // Initial update
+  setTimeout(updateScorecard, 100);
+
+
+
+  
+  const container = document.getElementById("leader-cards");
+  if(!container) return;
+  
+  container.innerHTML = "";
+  
+  Object.entries(teams).forEach(([leader, members]) => {
+    let completed = 0;
+    members.forEach(name => {
+      const rows = document.querySelectorAll("tbody tr");
+      rows.forEach(row => {
+        if(row.dataset.name === name){
+          const cb = row.querySelector("input[type='checkbox']");
+          if(cb && cb.checked) completed++;
+        }
+      });
+    });
+    
+    const pct = Math.round((completed / members.length) * 100);
+    const html = `<div style="padding: 12px; background: var(--surface2); border-radius: 6px; border-left: 3px solid var(--accent);">
+      <div style="font-weight: 600; font-size: 13px; margin-bottom: 6px;">${leader}</div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+        <span style="font-size: 16px; font-weight: 700; color: var(--accent);">${completed}</span>
+        <span style="font-size: 12px; color: var(--text-dim);">of ${members.length}</span>
+      </div>
+      <div style="background: rgba(0,0,0,0.1); border-radius: 3px; height: 4px; overflow: hidden;">
+        <div style="width: ${pct}%; height: 100%; background: linear-gradient(90deg, #ef4444, #f97316, #22c55e); transition: width 0.3s;"></div>
+      </div>
+      <div style="text-align: center; font-size: 11px; color: var(--text-dim); margin-top: 6px;">${pct}%</div>
+    </div>`;
+    container.insertAdjacentHTML("beforeend", html);
+  });
+}
+
+
+  
+
+  // Update scorecard on PCN checkbox change
+  document.addEventListener('change', function(e){
+    if(e.target.type === 'checkbox' && e.target.closest('.cell-pcn')) {
+      updateScorecard();
+    }
+  });
+  
+  // Initial update
+  setTimeout(updateScorecard, 100);
+  // Update scorecard on PCN checkbox change
+  document.addEventListener('change', function(e){
+    if(e.target.type === 'checkbox' && e.target.closest('.cell-pcn')) {
+      updateScorecard();
+    }
+  });
+  
+  // Initial update
+  setTimeout(updateScorecard, 100);
+
+</script>
+</body>
+</html>
